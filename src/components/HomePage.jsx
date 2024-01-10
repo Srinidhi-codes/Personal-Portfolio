@@ -7,6 +7,8 @@ import ProjectPage from './ProjectPage';
 import ContactPage from './ContactPage';
 import { useTypewriter, Cursor } from "react-simple-typewriter"
 import { animate, motion } from "framer-motion"
+import { Link } from 'react-router-dom';
+
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 
@@ -171,6 +173,16 @@ const hoverEffect = {
     },
 }
 
+const file = 'http://localhost:3000/Srinidhi_SN.pdf'
+const downloadFile = (url) => {
+    const file = url.split('/').pop()
+    const download = document.createElement('a');
+    download.href = url
+    download.setAttribute('download', file)
+    document.body.appendChild(download);
+    download.click();
+    download.remove();
+}
 
 export const HomePage = () => {
     const [text] = useTypewriter({
@@ -193,7 +205,9 @@ export const HomePage = () => {
                         <BiLogoLinkedinSquare size={30} className='rounded-full text-skin-main outline outline-offset-1 p-1 hover:p-0 hover:shadow-[0_0_1rem_5px_#0ef] animate-[bounce_1.5s_ease-in-out_infinite]' />
                         <BiLogoInstagram size={30} className='rounded-full text-skin-main outline outline-offset-1 p-1 hover:p-0 hover:shadow-[0_0_1rem_5px_#0ef] animate-[bounce_1.6s_ease-out_infinite]' />
                     </motion.div>
-                    <motion.button variants={btnGroup} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className='bg-skin-main w-fit lg:px-5 lg:py-4 px-3 py-2 text-[1rem] rounded-full text-skin-base lg:font-bold hover:shadow-[0_0_1rem_5px_#0ef] transition-all ease-in-out duration-700 main-button'>Download Resume</motion.button>
+                    <motion.button onClick={() => downloadFile(file)} variants={btnGroup} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className='bg-skin-main w-fit lg:px-5 lg:py-4 px-3 py-2 text-[1rem] rounded-full text-skin-base lg:font-bold hover:shadow-[0_0_1rem_5px_#0ef] transition-all ease-in-out duration-700 main-button'>
+                        <Link download to='images/Srinidhi_SN.pdf' >Download Resume</Link>
+                    </motion.button>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, scale: 0, x: 200 }} whileInView={{ opacity: 1, scale: 1, x: 0 }} transition={{ duration: 1 }} className='mx-auto lg:mx-0 mb-8 lg:mb-0'>
                     <motion.img src={main} alt="" className='main ' />
