@@ -1,13 +1,286 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+    :root{
+        --bg-color: #242d3d;
+        --second-bg-color: #323946;
+        --text-color:rgb(250, 250, 250);
+        --main-color:#0ef;
+    }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
 }
+
+/* .header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+} */
+
+
+.main{
+    border-radius: 71% 29% 38% 62% / 59% 57% 43% 41%  ; 
+    width: 30vw;
+    filter: drop-shadow(5px 5px 8px #0ef);
+    margin-right: 2rem;
+    animation: floatImage 2.5s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0%{
+      transform: translateY(0);
+  }
+  50%{
+      transform: translateY(3rem);
+  }
+  100%{
+      transform: translateY(0);
+  }
+}
+
+@keyframes floatImagemobile {
+  0%{
+      transform: translateY(0);
+  }
+  50%{
+      transform: translateY(1.5rem);
+  }
+  100%{
+      transform: translateY(0);
+  }
+}
+
+
+.projects-box{
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--bg-color);
+    overflow: hidden;
+    display: flex;
+    width: 35rem;
+    height: 20rem;
+    animation: floatImage1 5s ease-in-out infinite;
+}
+
+@keyframes floatImage1 {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-1rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+.projects-box img{
+    width: 100% ;
+    transition: .5s ease;
+} 
+
+.projects-box:hover img{
+    transform: scale(1.5);
+} 
+
+.projects-box .projects-layer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgb(141, 247, 255),rgba(58, 57, 57, 0.1));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+    transform: translateY(100%);
+    transition: .5s ease;
+}
+
+.projects-box:hover .projects-layer{
+    transform: translateY(0);
+}
+
+/* Contact Section */
+
+.login-box {
+    position: relative;
+    width: 40vw;
+    height: 50vh;
+    padding: 40px;
+    background: var(--bg-color);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+
+  .login-box:hover{
+    transition: 1s ease-out;
+    box-shadow: 0 0 6px #0ef,
+    0 0 6px #0ef,
+    0 0 6px #0ef,
+    0 0 15px #0ef;
+  }
+  .main-button{
+    transition: 1s ease-out;
+    animation: button-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes button-glow {
+    100%{
+        box-shadow: 0 0 10px #0ef,
+        0 0 10px #0ef,
+        0 0 10px #0ef,
+        0 0 15px #0ef;
+    }
+   0%{
+        box-shadow: 0 0 10px #0ef,
+        0 0 10px #0ef,
+        0 0 10px #0ef,
+        0 0 15px #0ef;
+      }
+    50%{
+      box-shadow: 0 0 5px #0ef,
+      0 0 5px #0ef,
+      0 0 5px #0ef,
+      0 0 5px #0ef;
+      }
+  }
+ 
+  .login-box .user-box {
+    position: relative;
+    margin-top: 30px;
+  }
+  
+  .login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+  }
+
+  .login-box .user-box input:hover {
+    border-bottom: 1px solid #0ef;
+  }
+
+  .login-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 20px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+  }
+  
+  .login-box .user-box input:focus ~ label,
+  .login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #bdb8b8;
+    font-size: 15px;
+  }
+  
+  .login-box form button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px
+  }
+  
+  .login-box button:hover {
+    background: #0ef;
+    color: #050505;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #0ef,
+                0 0 25px #0ef,
+                0 0 50px #0ef,
+                0 0 25px #0ef;
+  }
+  
+  .login-box button span {
+    position: absolute;
+    display: block;
+  }
+  
+  @keyframes btn-anim1 {
+    0% {
+      left: -100%;
+    }
+  
+    50%,100%{
+        left: 100%;
+    }
+
+  }
+  
+  .login-box button span:nth-child(1) {
+    bottom: 2px;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #0ef);
+    animation: btn-anim1 2s linear infinite;
+  }
+
+  @media (max-width:775px){
+    html{
+        overflow-x: hidden;
+    }
+    .main{
+      width: 50vw;
+      animation: floatImagemobile 2.5s ease-in-out infinite;
+    }
+    .projects-box{
+      width: 20rem;
+      height: 13rem;
+    }
+    .projects-box .projects-layer{
+      font-size: 1rem;
+    }
+    .login-box{
+      position: relative;
+      width: 20rem;
+      height: 60%;
+      padding: 40px;
+    }
+}
+
+
+
